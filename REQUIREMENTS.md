@@ -37,7 +37,7 @@ A native iOS and macOS app (single SwiftUI multiplatform project) that adds and 
 
 **Rows area**
 - A scrollable list of time rows (see Row spec below)
-- Starts with one row on launch
+- Starts with two rows on launch
 
 **"Add Row" button**
 - Adds a new row at the bottom of the list
@@ -68,7 +68,7 @@ Each row contains:
 - H/M/S fields accept positive numbers only (no negative input)
 - Decimals are allowed in all three fields (e.g., `1.5` hours = 1h 30m 0s)
 - Blank, a lone minus sign, a lone dot, or whitespace-only input is treated as `0`
-- Non-numeric input should be rejected or flagged inline (e.g., red border)
+- Non-numeric input should be rejected or flagged inline (e.g., red border) and display an error explaining why
 
 ---
 
@@ -132,7 +132,7 @@ Total: 02:15:30
 ## Behavior Details
 
 - Total recalculates **live** on every keystroke in any field and on every +/− toggle tap
-- App launches with **one empty row** ready for input
+- App launches with **two empty rows** ready for input
 - No row deletion required in v1 (can be added later)
 - No persistence required in v1 — state resets on relaunch
 - Rows are **not** reorderable in v1
