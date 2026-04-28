@@ -170,16 +170,15 @@ struct ContentView: View {
         .padding(.horizontal, 4)
     }
 
-    private var donateLink: some View {
-        Link(destination: URL(string: "https://podfeet.com/donate")!) {
-            HStack {
-                Text("☕")
-                Text("Buy me a coffee")
-            }
-            .frame(maxWidth: .infinity)
+    private var resetButton: some View {
+        Button {
+            rows = [TimeRow(), TimeRow()]
+        } label: {
+            Text("Reset")
+                .frame(maxWidth: .infinity)
         }
         .buttonStyle(.bordered)
-        .controlSize(.large)
+        .tint(.red)
         .padding(.bottom, 8)
     }
 
