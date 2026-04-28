@@ -6,8 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		37D9E95C2FA0367900A68EC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37D9E9362F9FD9D800A68EC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37D9E93D2F9FD9D800A68EC9;
+			remoteInfo = ElapsedTimeAdder;
+		};
+		37D9E96D2FA036AC00A68EC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37D9E9362F9FD9D800A68EC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 37D9E93D2F9FD9D800A68EC9;
+			remoteInfo = ElapsedTimeAdder;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeAdder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElapsedTimeAdder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D9E9582FA0367900A68EC9 /* ElapsedTimeAdderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElapsedTimeAdderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D9E9692FA036AC00A68EC9 /* ElapsedTimeAdderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElapsedTimeAdderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +35,34 @@
 			path = ElapsedTimeAdder;
 			sourceTree = "<group>";
 		};
+		37D9E9592FA0367900A68EC9 /* ElapsedTimeAdderTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ElapsedTimeAdderTests;
+			sourceTree = "<group>";
+		};
+		37D9E96A2FA036AC00A68EC9 /* ElapsedTimeAdderUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ElapsedTimeAdderUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		37D9E93B2F9FD9D800A68EC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D9E9552FA0367900A68EC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D9E9662FA036AC00A68EC9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				37D9E9402F9FD9D800A68EC9 /* ElapsedTimeAdder */,
+				37D9E9592FA0367900A68EC9 /* ElapsedTimeAdderTests */,
+				37D9E96A2FA036AC00A68EC9 /* ElapsedTimeAdderUITests */,
 				37D9E93F2F9FD9D800A68EC9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeAdder.app */,
+				37D9E9582FA0367900A68EC9 /* ElapsedTimeAdderTests.xctest */,
+				37D9E9692FA036AC00A68EC9 /* ElapsedTimeAdderUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +117,52 @@
 			productReference = 37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeAdder.app */;
 			productType = "com.apple.product-type.application";
 		};
+		37D9E9572FA0367900A68EC9 /* ElapsedTimeAdderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37D9E95E2FA0367900A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderTests" */;
+			buildPhases = (
+				37D9E9542FA0367900A68EC9 /* Sources */,
+				37D9E9552FA0367900A68EC9 /* Frameworks */,
+				37D9E9562FA0367900A68EC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37D9E95D2FA0367900A68EC9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				37D9E9592FA0367900A68EC9 /* ElapsedTimeAdderTests */,
+			);
+			name = ElapsedTimeAdderTests;
+			packageProductDependencies = (
+			);
+			productName = ElapsedTimeAdderTests;
+			productReference = 37D9E9582FA0367900A68EC9 /* ElapsedTimeAdderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		37D9E9682FA036AC00A68EC9 /* ElapsedTimeAdderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37D9E96F2FA036AC00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderUITests" */;
+			buildPhases = (
+				37D9E9652FA036AC00A68EC9 /* Sources */,
+				37D9E9662FA036AC00A68EC9 /* Frameworks */,
+				37D9E9672FA036AC00A68EC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37D9E96E2FA036AC00A68EC9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				37D9E96A2FA036AC00A68EC9 /* ElapsedTimeAdderUITests */,
+			);
+			name = ElapsedTimeAdderUITests;
+			packageProductDependencies = (
+			);
+			productName = ElapsedTimeAdderUITests;
+			productReference = 37D9E9692FA036AC00A68EC9 /* ElapsedTimeAdderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +175,14 @@
 				TargetAttributes = {
 					37D9E93D2F9FD9D800A68EC9 = {
 						CreatedOnToolsVersion = 26.4.1;
+					};
+					37D9E9572FA0367900A68EC9 = {
+						CreatedOnToolsVersion = 26.4.1;
+						TestTargetID = 37D9E93D2F9FD9D800A68EC9;
+					};
+					37D9E9682FA036AC00A68EC9 = {
+						CreatedOnToolsVersion = 26.4.1;
+						TestTargetID = 37D9E93D2F9FD9D800A68EC9;
 					};
 				};
 			};
@@ -100,12 +201,28 @@
 			projectRoot = "";
 			targets = (
 				37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeAdder */,
+				37D9E9572FA0367900A68EC9 /* ElapsedTimeAdderTests */,
+				37D9E9682FA036AC00A68EC9 /* ElapsedTimeAdderUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		37D9E93C2F9FD9D800A68EC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D9E9562FA0367900A68EC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D9E9672FA036AC00A68EC9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +239,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		37D9E9542FA0367900A68EC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37D9E9652FA036AC00A68EC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37D9E95D2FA0367900A68EC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+				macos,
+			);
+			target = 37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeAdder */;
+			targetProxy = 37D9E95C2FA0367900A68EC9 /* PBXContainerItemProxy */;
+		};
+		37D9E96E2FA036AC00A68EC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeAdder */;
+			targetProxy = 37D9E96D2FA036AC00A68EC9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		37D9E9472F9FD9DA00A68EC9 /* Debug */ = {
@@ -325,6 +473,114 @@
 			};
 			name = Release;
 		};
+		37D9E95F2FA0367900A68EC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NR9H9B3S2Z;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.podfeet.ElapsedTimeAdderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElapsedTimeAdder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElapsedTimeAdder";
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Debug;
+		};
+		37D9E9602FA0367900A68EC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NR9H9B3S2Z;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.podfeet.ElapsedTimeAdderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElapsedTimeAdder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElapsedTimeAdder";
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Release;
+		};
+		37D9E9702FA036AC00A68EC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NR9H9B3S2Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.podfeet.ElapsedTimeAdderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ElapsedTimeAdder;
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Debug;
+		};
+		37D9E9712FA036AC00A68EC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NR9H9B3S2Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.podfeet.ElapsedTimeAdderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ElapsedTimeAdder;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -342,6 +598,24 @@
 			buildConfigurations = (
 				37D9E94A2F9FD9DA00A68EC9 /* Debug */,
 				37D9E94B2F9FD9DA00A68EC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37D9E95E2FA0367900A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37D9E95F2FA0367900A68EC9 /* Debug */,
+				37D9E9602FA0367900A68EC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37D9E96F2FA036AC00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37D9E9702FA036AC00A68EC9 /* Debug */,
+				37D9E9712FA036AC00A68EC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -47,6 +47,7 @@ struct ContentView: View {
                     .buttonStyle(.bordered)
                     .controlSize(.large)
                     .padding(.top, 4)
+                    .accessibilityIdentifier("addRowButton")
 
                     Divider().padding(.vertical, 8)
 
@@ -76,6 +77,7 @@ struct ContentView: View {
                 Label(showExplanation ? "Hide" : "How it works",
                       systemImage: "questionmark.circle")
             }
+            .accessibilityIdentifier("howItWorksButton")
 
             if showExplanation {
                 VStack(alignment: .leading, spacing: 10) {
@@ -178,6 +180,7 @@ struct ContentView: View {
         .buttonStyle(.bordered)
         .tint(.red)
         .padding(.bottom, 8)
+        .accessibilityIdentifier("resetButton")
     }
 
     // MARK: - Helpers

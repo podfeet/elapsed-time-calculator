@@ -58,7 +58,7 @@ struct TimeRowView: View {
             } label: {
                 Text(row.isSubtracting ? "−" : "+")
                     .font(.title3.bold())
-                    .frame(width: 44, height: 34)
+                    .frame(width: 44, height: 44)
                     .foregroundColor(row.isSubtracting ? .red : .blue)
                     .background(
                         RoundedRectangle(cornerRadius: 6)
@@ -68,6 +68,7 @@ struct TimeRowView: View {
             .buttonStyle(.plain)
             .accessibilityLabel(row.isSubtracting ? "Subtract time" : "Add time")
             .accessibilityHint("Toggles whether this time is added or subtracted from the total")
+            .accessibilityIdentifier("toggleButton")
         }
         .padding(.vertical, 2)
     }
