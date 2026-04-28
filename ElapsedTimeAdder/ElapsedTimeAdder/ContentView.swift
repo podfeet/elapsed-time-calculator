@@ -103,9 +103,8 @@ struct ContentView: View {
                 Text("Export CSV")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.green)
-            .controlSize(.large)
+            .buttonStyle(.bordered)
+            .tint(.blue)
 
             ShareLink(
                 item: hhmmssString(rows: rows, total: total),
@@ -115,8 +114,8 @@ struct ContentView: View {
                 Text("Export HH:MM:SS")
                     .frame(maxWidth: .infinity)
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.red)
+            .buttonStyle(.bordered)
+            .tint(.blue)
             .controlSize(.large)
         }
     }
