@@ -84,9 +84,10 @@ struct ContentView: View {
                     Text("This app allows you to type in values for each row, and as you add values, the total is automatically calculated.")
                     Text("You can add an optional title for each row, and when you're done, tap \"Export to CSV\" to get the data for a spreadsheet.")
                 }
-                .font(.body)
+                .font(.callout)
+                .foregroundStyle(.secondary)
                 .padding()
-                .background(.quaternary, in: RoundedRectangle(cornerRadius: 10))
+                .background(Color.blue.opacity(0.06), in: RoundedRectangle(cornerRadius: 10))
                 .transition(.opacity)
             }
         }
