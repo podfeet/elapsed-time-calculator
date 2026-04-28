@@ -17,6 +17,7 @@ struct TimeRowView: View {
                       prompt: Text("title (opt)").foregroundColor(.primary.opacity(0.5)))
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: .infinity)
+                .accessibilityLabel("Row title")
 
             // Hours
             TextField("", text: $row.hours,
@@ -24,6 +25,7 @@ struct TimeRowView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 55)
                 .multilineTextAlignment(.center)
+                .accessibilityLabel("Hours")
 #if os(iOS)
                 .keyboardType(.decimalPad)
 #endif
@@ -34,6 +36,7 @@ struct TimeRowView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 55)
                 .multilineTextAlignment(.center)
+                .accessibilityLabel("Minutes")
 #if os(iOS)
                 .keyboardType(.decimalPad)
 #endif
@@ -44,6 +47,7 @@ struct TimeRowView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 55)
                 .multilineTextAlignment(.center)
+                .accessibilityLabel("Seconds")
 #if os(iOS)
                 .keyboardType(.decimalPad)
 #endif
@@ -62,6 +66,8 @@ struct TimeRowView: View {
                     )
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(row.isSubtracting ? "Subtract time" : "Add time")
+            .accessibilityHint("Toggles whether this time is added or subtracted from the total")
         }
         .padding(.vertical, 2)
     }
