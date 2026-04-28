@@ -115,7 +115,6 @@ struct ContentView: View {
             }
             .buttonStyle(.bordered)
             .tint(.blue)
-            .controlSize(.large)
         }
     }
 
