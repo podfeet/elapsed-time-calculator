@@ -100,12 +100,50 @@ final class AccessibilityTests: XCTestCase {
 
     // MARK: - Reset
 
-    func testResetClearsFields() {
-        let hoursField = app.textFields.matching(NSPredicate(format: "label == 'Hours'")).firstMatch
-        hoursField.tap()
-        hoursField.typeText("5")
+    func testResetRestoresInitialState() {
+        let hoursPredicate = NSPredicate(format: "label == 'Hours'")
+        let initialRowCount = app.textFields.matching(hoursPredicate).count
+
+        // 1. Add a title to the first row
+        let firstTitle = app.textFields.matching(NSPredicate(format: "label == 'Row title'")).firstMatch
+        firstTitle.tap()
+        firstTitle.typeText("My Segment")
+
+        // 2. Enter hours in the first row
+        let firstHours = app.textFields.matching(hoursPredicate).firstMatch
+        firstHours.tap()
+        firstHours.typeText("5")
+
+        // 3. Toggle the first row from + to −
+        let firstToggle = app.buttons.matching(identifier: "toggleButton").firstMatch
+        firstToggle.tap()
+        XCTAssertEqual(firstToggle.label, "Subtract time", "Toggle should switch to subtract")
+
+        // 4. Add a new row
+        app.buttons["addRowButton"].tap()
+        XCTAssertEqual(app.textFields.matching(hoursPredicate).count, initialRowCount + 1,
+                       "Should have one more row after tapping Add Another Row")
+
+        // 5. Enter a value in the new row
+        let newRowHours = app.textFields.matching(hoursPredicate).element(boundBy: initialRowCount)
+        newRowHours.tap()
+        newRowHours.typeText("3")
+
+        // 6. Scroll down to reveal Reset and tap it
+        app.scrollViews.firstMatch.swipeUp()
         app.buttons["resetButton"].tap()
-        XCTAssertEqual(hoursField.value as? String, "",
-                       "Reset should clear all field values")
+
+        // 7. Verify everything is back to the initial state
+        XCTAssertEqual(app.textFields.matching(hoursPredicate).count, initialRowCount,
+                       "Row count should be restored after reset")
+
+        XCTAssertEqual(app.textFields.matching(hoursPredicate).firstMatch.value as? String, "",
+                       "Hours field should be empty after reset")
+
+        XCTAssertEqual(app.textFields.matching(NSPredicate(format: "label == 'Row title'")).firstMatch.value as? String, "",
+                       "Title field should be empty after reset")
+
+        XCTAssertEqual(app.buttons.matching(identifier: "toggleButton").firstMatch.label, "Add time",
+                       "Toggle should be back to + after reset")
     }
 }
