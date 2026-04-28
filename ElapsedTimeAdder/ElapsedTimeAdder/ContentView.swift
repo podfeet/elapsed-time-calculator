@@ -50,8 +50,8 @@ struct ContentView: View {
 
                     Divider().padding(.vertical, 8)
 
-                    // Donate
-                    donateLink
+                    // Reset
+                    resetButton
                 }
                 .padding()
             }
