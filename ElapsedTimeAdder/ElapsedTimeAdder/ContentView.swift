@@ -29,58 +29,73 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
+            Group {
+                if isWide {
+                    // MARK: Wide layout — sidebar + main column
+                    HStack(alignment: .top, spacing: 0) {
 
-                    // App title
-                    Text("Elapsed Time Adder")
-                        .font(.largeTitle.bold())
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .multilineTextAlignment(.center)
+                        // Left sidebar: title, how it works, total, export, branding
+                        ScrollView {
+                            VStack(spacing: 16) {
+                                Text("Elapsed Time Adder")
+                                    .font(.largeTitle.bold())
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .multilineTextAlignment(.center)
+                                headerSection
+                                totalSection
+                                sidebarExportButtons
+                                Spacer(minLength: 32)
+                                podfeetBranding
+                            }
+                            .padding()
+                        }
+                        .frame(width: 300)
+                        .background(Color.secondary.opacity(0.06))
 
-                    // Header
-                    headerSection
+                        Divider()
 
-                    // Export buttons (at top, like the web app)
-                    exportButtons
-
-                    // Total row
-                    totalSection
-
-                    // Column labels
-                    columnHeaders
-
-                    // Time rows
-                    ForEach(rows) { row in
-                        TimeRowView(row: row)
+                        // Right main: column headers, rows, add row, reset
+                        ScrollView {
+                            rowsSection
+                                .padding()
+                        }
                     }
 
-                    // Add Row
-                    Button {
-                        rows.append(TimeRow())
-                    } label: {
-                        Text("Add Another Row")
-                            .foregroundStyle(.blue)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 8)
-                            .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+                } else {
+                    // MARK: Narrow layout — single column (iPhone)
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            Text("Elapsed Time Adder")
+                                .font(.largeTitle.bold())
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .multilineTextAlignment(.center)
+                            headerSection
+                            exportButtons
+                            totalSection
+                            columnHeaders
+                            ForEach(rows) { row in
+                                TimeRowView(row: row)
+                            }
+                            Button {
+                                rows.append(TimeRow())
+                            } label: {
+                                Text("Add Another Row")
+                                    .foregroundStyle(.blue)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 8)
+                                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.top, 4)
+                            .accessibilityIdentifier("addRowButton")
+                            Divider().padding(.vertical, 8).accessibilityHidden(true)
+                            resetButton
+                            podfeetBranding
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 16)
                     }
-                    .buttonStyle(.plain)
-                    .padding(.top, 4)
-                    .accessibilityIdentifier("addRowButton")
-
-                    Divider().padding(.vertical, 8).accessibilityHidden(true)
-
-                    // Reset
-                    resetButton
-
-                    // Branding
-                    podfeetBranding
                 }
-                .padding(.horizontal, isWide ? 48 : 16)
-                .padding(.vertical, 16)
-                .frame(maxWidth: isWide ? 900 : .infinity)
-                .frame(maxWidth: .infinity)
             }
             .navigationTitle("Elapsed Time Adder")
 #if os(iOS)
@@ -89,6 +104,30 @@ struct ContentView: View {
             .toolbar(.hidden, for: .windowToolbar)
             .ignoresSafeArea(edges: .top)
 #endif
+        }
+    }
+
+    // Used by the wide sidebar layout for the right-hand column
+    private var rowsSection: some View {
+        VStack(spacing: 16) {
+            columnHeaders
+            ForEach(rows) { row in
+                TimeRowView(row: row)
+            }
+            Button {
+                rows.append(TimeRow())
+            } label: {
+                Text("Add Another Row")
+                    .foregroundStyle(.blue)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+            }
+            .buttonStyle(.plain)
+            .padding(.top, 4)
+            .accessibilityIdentifier("addRowButton")
+            Divider().padding(.vertical, 8).accessibilityHidden(true)
+            resetButton
         }
     }
 
@@ -159,6 +198,42 @@ struct ContentView: View {
             }
             .buttonStyle(.plain)
         }
+    }
+
+    // Sidebar variant: stacked vertically, both buttons sized to the widest one, centered
+    private var sidebarExportButtons: some View {
+        VStack(spacing: 16) {
+            ShareLink(
+                item: csvString(rows: rows, total: total),
+                subject: Text("Elapsed Time Export"),
+                message: Text("Elapsed time data")
+            ) {
+                Text("Export CSV")
+                    .foregroundStyle(.blue)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 24)
+                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+            }
+            .buttonStyle(.plain)
+
+            ShareLink(
+                item: hhmmssString(rows: rows, total: total),
+                subject: Text("Elapsed Time Export"),
+                message: Text("Elapsed time data")
+            ) {
+                Text("Export HH:MM:SS")
+                    .foregroundStyle(.blue)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 24)
+                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+            }
+            .buttonStyle(.plain)
+        }
+        .fixedSize(horizontal: true, vertical: false)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
     }
 
     private var totalSection: some View {
