@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var rows: [TimeRow] = [TimeRow(), TimeRow()]
     @State private var showExplanation = false
+    @AccessibilityFocusState private var explanationFocused: Bool
 
     private var total: TimeResult {
         calcTotal(rows: rows)
@@ -73,10 +74,17 @@ struct ContentView: View {
 
             Button {
                 withAnimation { showExplanation.toggle() }
+                if showExplanation {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        explanationFocused = true
+                    }
+                }
             } label: {
                 Label(showExplanation ? "Hide" : "How it works",
                       systemImage: "questionmark.circle")
             }
+            .accessibilityLabel(showExplanation ? "Hide explanation" : "How it works")
+            .accessibilityAddTraits(.isButton)
             .accessibilityIdentifier("howItWorksButton")
 
             if showExplanation {
@@ -92,6 +100,7 @@ struct ContentView: View {
                 .transition(.opacity)
                 .accessibilityElement(children: .contain)
                 .accessibilityIdentifier("explanationPanel")
+                .accessibilityFocused($explanationFocused)
             }
         }
     }
@@ -175,6 +184,7 @@ struct ContentView: View {
         .font(.callout.bold())
         .foregroundStyle(.primary)
         .padding(.horizontal, 4)
+        .accessibilityHidden(true)
     }
 
     private var resetButton: some View {
