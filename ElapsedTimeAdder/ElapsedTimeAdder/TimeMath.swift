@@ -50,6 +50,16 @@ func zeroIfBlank(_ s: String) -> Double {
     return Double(t) ?? 0
 }
 
+/// Returns true if the string is acceptable input for H/M/S fields.
+/// Blank, "-", and "." are treated as zero and are valid.
+/// Letters, special characters, and negative numbers are invalid.
+func isValidTimeInput(_ s: String) -> Bool {
+    let t = s.trimmingCharacters(in: .whitespaces)
+    if t.isEmpty || t == "-" || t == "." { return true }
+    guard let value = Double(t) else { return false }
+    return value >= 0
+}
+
 extension Double {
     func rounded(toPlaces places: Int) -> Double {
         let factor = pow(10.0, Double(places))

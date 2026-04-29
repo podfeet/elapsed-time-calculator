@@ -16,6 +16,14 @@ struct ContentView: View {
         calcTotal(rows: rows)
     }
 
+    private var hasAnyError: Bool {
+        rows.contains {
+            !isValidTimeInput($0.hours) ||
+            !isValidTimeInput($0.minutes) ||
+            !isValidTimeInput($0.seconds)
+        }
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -43,10 +51,12 @@ struct ContentView: View {
                         rows.append(TimeRow())
                     } label: {
                         Text("Add Another Row")
+                            .foregroundStyle(.blue)
                             .frame(maxWidth: .infinity)
+                            .padding(.vertical, 8)
+                            .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.large)
+                    .buttonStyle(.plain)
                     .padding(.top, 4)
                     .accessibilityIdentifier("addRowButton")
 
@@ -82,7 +92,9 @@ struct ContentView: View {
             } label: {
                 Label(showExplanation ? "Hide" : "How it works",
                       systemImage: "questionmark.circle")
+                    .foregroundStyle(.blue)
             }
+            .buttonStyle(.plain)
             .accessibilityLabel(showExplanation ? "Hide explanation" : "How it works")
             .accessibilityAddTraits(.isButton)
             .accessibilityIdentifier("howItWorksButton")
@@ -113,10 +125,12 @@ struct ContentView: View {
                 message: Text("Elapsed time data")
             ) {
                 Text("Export CSV")
+                    .foregroundStyle(.blue)
                     .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
             }
-            .buttonStyle(.bordered)
-            .tint(.blue)
+            .buttonStyle(.plain)
 
             ShareLink(
                 item: hhmmssString(rows: rows, total: total),
@@ -124,10 +138,12 @@ struct ContentView: View {
                 message: Text("Elapsed time data")
             ) {
                 Text("Export HH:MM:SS")
+                    .foregroundStyle(.blue)
                     .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
             }
-            .buttonStyle(.bordered)
-            .tint(.blue)
+            .buttonStyle(.plain)
         }
     }
 
@@ -137,9 +153,9 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)
 
-            totalBox(formatTotalValue(total.hours))
-            totalBox(formatTotalValue(total.minutes))
-            totalBox(formatTotalValue(total.seconds))
+            totalBox(formatTotalValue(total.hours), error: hasAnyError)
+            totalBox(formatTotalValue(total.minutes), error: hasAnyError)
+            totalBox(formatTotalValue(total.seconds), error: hasAnyError)
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Total: \(formatTotalValue(total.hours)) hours, \(formatTotalValue(total.minutes)) minutes, \(formatTotalValue(total.seconds)) seconds")
@@ -149,15 +165,17 @@ struct ContentView: View {
         .background(Color.secondary.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
     }
 
-    private func totalBox(_ text: String) -> some View {
+    private func totalBox(_ text: String, error: Bool = false) -> some View {
         Text(text)
             .monospacedDigit()
-            .foregroundStyle(.primary)
+            .foregroundStyle(error ? .red : .primary)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 6)
+            .padding(.vertical, 8)
+            .background(.background, in: RoundedRectangle(cornerRadius: 8))
+            .shadow(color: .primary.opacity(0.12), radius: 3, x: 0, y: 1)
             .overlay(
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.primary.opacity(0.5), lineWidth: 1.5)
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(error ? Color.red : Color.clear, lineWidth: 2)
             )
     }
 
@@ -192,10 +210,12 @@ struct ContentView: View {
             rows = [TimeRow(), TimeRow()]
         } label: {
             Text("Reset")
+                .foregroundStyle(.red)
                 .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)
+                .background(Color.red.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
         }
-        .buttonStyle(.bordered)
-        .tint(.red)
+        .buttonStyle(.plain)
         .padding(.bottom, 8)
         .accessibilityLabel("Reset all entries")
         .accessibilityHint("Clears all rows and returns to two empty rows")

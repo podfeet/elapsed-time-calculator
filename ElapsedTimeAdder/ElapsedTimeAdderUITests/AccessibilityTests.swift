@@ -146,4 +146,47 @@ final class AccessibilityTests: XCTestCase {
         XCTAssertEqual(app.buttons.matching(identifier: "toggleButton").firstMatch.label, "Add time",
                        "Toggle should be back to + after reset")
     }
+
+    // MARK: - Input validation
+
+    func testInvalidInputShowsError() {
+        let hoursField = app.textFields.matching(NSPredicate(format: "label == 'Hours'")).firstMatch
+        hoursField.tap()
+        hoursField.typeText("abc")
+        let error = app.staticTexts["Numbers, you silly goose!"]
+        XCTAssertTrue(error.waitForExistence(timeout: 1),
+                      "Error message should appear when invalid text is entered in an H/M/S field")
+    }
+
+    func testValidInputHidesError() {
+        // First trigger the error
+        let hoursField = app.textFields.matching(NSPredicate(format: "label == 'Hours'")).firstMatch
+        hoursField.tap()
+        hoursField.typeText("abc")
+        XCTAssertTrue(app.staticTexts["Numbers, you silly goose!"].waitForExistence(timeout: 1))
+
+        // Clear and enter a valid number — error should disappear
+        hoursField.clearText()
+        hoursField.typeText("5")
+        XCTAssertFalse(app.staticTexts["Numbers, you silly goose!"].waitForExistence(timeout: 1),
+                       "Error message should disappear when valid input is entered")
+    }
+
+    func testSpecialCharactersShowError() {
+        let minutesField = app.textFields.matching(NSPredicate(format: "label == 'Minutes'")).firstMatch
+        minutesField.tap()
+        minutesField.typeText("@#!")
+        XCTAssertTrue(app.staticTexts["Numbers, you silly goose!"].waitForExistence(timeout: 1),
+                      "Special characters should trigger the error message")
+    }
+}
+
+// MARK: - XCUIElement helper
+
+extension XCUIElement {
+    func clearText() {
+        guard let value = self.value as? String, !value.isEmpty else { return }
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: value.count)
+        self.typeText(deleteString)
+    }
 }
