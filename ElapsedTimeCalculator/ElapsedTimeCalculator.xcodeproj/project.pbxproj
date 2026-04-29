@@ -12,14 +12,14 @@
 			containerPortal = 37D9E9362F9FD9D800A68EC9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 37D9E93D2F9FD9D800A68EC9;
-			remoteInfo = ElapsedTimeAdder;
+			remoteInfo = ElapsedTimeCalculator;
 		};
 		37D9E96D2FA036AC00A68EC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 37D9E9362F9FD9D800A68EC9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 37D9E93D2F9FD9D800A68EC9;
-			remoteInfo = ElapsedTimeAdder;
+			remoteInfo = ElapsedTimeCalculator;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -113,7 +113,7 @@
 			name = ElapsedTimeCalculator;
 			packageProductDependencies = (
 			);
-			productName = ElapsedTimeAdder;
+			productName = ElapsedTimeCalculator;
 			productReference = 37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -136,7 +136,7 @@
 			name = ElapsedTimeCalculatorTests;
 			packageProductDependencies = (
 			);
-			productName = ElapsedTimeAdderTests;
+			productName = ElapsedTimeCalculatorTests;
 			productReference = 37D9E9582FA0367900A68EC9 /* ElapsedTimeCalculatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -159,7 +159,7 @@
 			name = ElapsedTimeCalculatorUITests;
 			packageProductDependencies = (
 			);
-			productName = ElapsedTimeAdderUITests;
+			productName = ElapsedTimeCalculatorUITests;
 			productReference = 37D9E9692FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -551,7 +551,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ElapsedTimeAdder;
+				TEST_TARGET_NAME = ElapsedTimeCalculator;
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Debug;
@@ -575,7 +575,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ElapsedTimeAdder;
+				TEST_TARGET_NAME = ElapsedTimeCalculator;
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
