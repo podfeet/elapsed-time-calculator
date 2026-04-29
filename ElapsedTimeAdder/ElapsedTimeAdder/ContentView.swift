@@ -29,6 +29,12 @@ struct ContentView: View {
             ScrollView {
                 VStack(spacing: 16) {
 
+                    // App title
+                    Text("Elapsed Time Adder")
+                        .font(.largeTitle.bold())
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center)
+
                     // Header
                     headerSection
 
@@ -64,12 +70,15 @@ struct ContentView: View {
 
                     // Reset
                     resetButton
+
+                    // Branding
+                    podfeetBranding
                 }
                 .padding()
             }
             .navigationTitle("Elapsed Time Adder")
 #if os(iOS)
-            .navigationBarTitleDisplayMode(.large)
+            .toolbar(.hidden, for: .navigationBar)
 #endif
         }
     }
@@ -78,10 +87,6 @@ struct ContentView: View {
 
     private var headerSection: some View {
         VStack(spacing: 10) {
-            Text("Add and subtract elapsed time")
-                .font(.body)
-                .foregroundStyle(.secondary)
-
             Button {
                 withAnimation { showExplanation.toggle() }
                 if showExplanation {
@@ -220,6 +225,22 @@ struct ContentView: View {
         .accessibilityLabel("Reset all entries")
         .accessibilityHint("Clears all rows and returns to two empty rows")
         .accessibilityIdentifier("resetButton")
+    }
+
+    private var podfeetBranding: some View {
+        HStack(spacing: 8) {
+            Image("PodfeetLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 28)
+            Text("A Podfeet App")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .padding(.top, 4)
+        .padding(.bottom, 8)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("A Podfeet App")
     }
 
     // MARK: - Helpers
