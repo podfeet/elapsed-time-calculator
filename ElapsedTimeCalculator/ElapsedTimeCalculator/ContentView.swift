@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var rows: [TimeRow] = [TimeRow(), TimeRow()]
-    @State private var showExplanation = false
-    @AccessibilityFocusState private var explanationFocused: Bool
+    @State private var showSpreadsheetNote = false
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     private var isWide: Bool { horizontalSizeClass == .regular }
@@ -41,10 +40,11 @@ struct ContentView: View {
                                     .font(.largeTitle.bold())
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .multilineTextAlignment(.center)
-                                headerSection
+                                usageHint
                                 totalSection
                                 sidebarExportButtons
                                 Spacer(minLength: 32)
+                                spreadsheetButton
                                 podfeetBranding
                             }
                             .padding()
@@ -69,7 +69,7 @@ struct ContentView: View {
                                 .font(.largeTitle.bold())
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .multilineTextAlignment(.center)
-                            headerSection
+                            usageHint
                             exportButtons
                             totalSection
                             columnHeaders
@@ -90,6 +90,7 @@ struct ContentView: View {
                             .accessibilityIdentifier("addRowButton")
                             Divider().padding(.vertical, 8).accessibilityHidden(true)
                             resetButton
+                            spreadsheetButton
                             podfeetBranding
                         }
                         .padding(.horizontal, 16)
@@ -133,39 +134,36 @@ struct ContentView: View {
 
     // MARK: - Subviews
 
-    private var headerSection: some View {
-        VStack(spacing: 10) {
+    private var usageHint: some View {
+        Text("Enter a time in each row and choose Add (+) or Subtract (−). The total updates as you type.")
+            .font(.callout)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .accessibilityIdentifier("usageHint")
+    }
+
+    private var spreadsheetButton: some View {
+        VStack(spacing: 8) {
             Button {
-                withAnimation { showExplanation.toggle() }
-                if showExplanation {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        explanationFocused = true
-                    }
-                }
+                withAnimation { showSpreadsheetNote.toggle() }
             } label: {
-                Label(showExplanation ? "Hide" : "How it works",
-                      systemImage: "questionmark.circle")
-                    .foregroundStyle(.blue)
+                Label(showSpreadsheetNote ? "Hide" : "Why not use a spreadsheet?",
+                      systemImage: "tablecells")
+                    .foregroundStyle(.secondary)
+                    .font(.footnote)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(showExplanation ? "Hide explanation" : "How it works")
-            .accessibilityAddTraits(.isButton)
-            .accessibilityIdentifier("howItWorksButton")
+            .accessibilityLabel(showSpreadsheetNote ? "Hide spreadsheet note" : "Why not use a spreadsheet?")
+            .accessibilityIdentifier("spreadsheetButton")
 
-            if showExplanation {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Why not just use Excel, Numbers, or Google Sheets? Because they don't do *elapsed* time — they do absolute time. Add 22:00 + 5:00 in a spreadsheet and you'll get 3:00 AM, not 27:00.")
-                    Text("Type hours, minutes, and seconds into each row. Use the **+/−** button to add or subtract that row from the total. The total updates as you type.")
-                    Text("Add an optional title to each row, then export as CSV or HH:MM:SS when you're done.")
-                }
-                .font(.callout)
-                .foregroundStyle(.secondary)
-                .padding()
-                .background(Color.blue.opacity(0.06), in: RoundedRectangle(cornerRadius: 10))
-                .transition(.opacity)
-                .accessibilityElement(children: .contain)
-                .accessibilityIdentifier("explanationPanel")
-                .accessibilityFocused($explanationFocused)
+            if showSpreadsheetNote {
+                Text("Why not just use Excel, Numbers, or Google Sheets? Because they don't do *elapsed* time — they do absolute time. Add 22:00 + 5:00 in a spreadsheet and you'll get 3:00 AM, not 27:00.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .padding()
+                    .background(Color.secondary.opacity(0.08), in: RoundedRectangle(cornerRadius: 10))
+                    .transition(.opacity)
+                    .accessibilityIdentifier("spreadsheetNote")
             }
         }
     }
