@@ -19,11 +19,19 @@ struct TimeRowView: View {
             HStack(spacing: 8) {
 
                 // Title
+#if os(iOS)
+                TextField("", text: $row.title,
+                          prompt: Text("title").foregroundColor(.primary.opacity(0.5)))
+                    .textFieldStyle(.roundedBorder)
+                    .frame(maxWidth: .infinity)
+                    .accessibilityLabel("Row title")
+#else
                 TextField("", text: $row.title,
                           prompt: Text("title (opt)").foregroundColor(.primary.opacity(0.5)))
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: .infinity)
                     .accessibilityLabel("Row title")
+#endif
 
                 // Hours
                 TextField("", text: $row.hours,
