@@ -20,11 +20,13 @@ The original web app (HTML/CSS/JS/jQuery/Bootstrap) lives in `web/` for referenc
 
 ## Key decisions made
 - **SwiftUI multiplatform** (not WKWebView wrapper) — native app, single codebase for iOS + macOS
-- **Single +/− toggle button per row** (not per field) — the whole row is positive or negative
+- **Single +/− toggle button per row** (not per field) — the whole row is positive or negative — implemented as a segmented Picker showing `+` / `−`
 - **H/M/S fields accept positive numbers and decimals only** — no negative input in fields
 - **Math logic ported from** `web/src/timeMath.js` — algorithm must be preserved exactly (see REQUIREMENTS.md)
 - **No persistence in v1** — state resets on relaunch
 - **No row deletion or reordering in v1**
+- **Column headers** use `Hrs / Min / Sec` (not single letters H/M/S)
+- **Total lives above the rows** — placing it below caused the keyboard to cover it on iPhone; keyboard toolbar approach was tried and abandoned (SwiftUI `.keyboard` toolbar placement caused tap-blocking bugs)
 
 ---
 
@@ -32,6 +34,7 @@ The original web app (HTML/CSS/JS/jQuery/Bootstrap) lives in `web/` for referenc
 - Xcode project fully built and working — all core features implemented
 - All tests passing (unit + UI/accessibility) when run on an **iPhone simulator** destination
 - Project renamed from `ElapsedTimeAdder` → `ElapsedTimeCalculator` (folder, scheme, targets)
+- `intuitive-interface` branch contains UX improvements (see below)
 
 ---
 
