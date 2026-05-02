@@ -70,12 +70,11 @@ struct ContentView: View {
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .multilineTextAlignment(.center)
                             usageHint
-                            exportButtons
-                            totalSection
                             columnHeaders
                             ForEach(rows) { row in
                                 TimeRowView(row: row)
                             }
+                            totalSummarySection
                             Button {
                                 rows.append(TimeRow())
                             } label: {
@@ -88,6 +87,7 @@ struct ContentView: View {
                             .buttonStyle(.plain)
                             .padding(.top, 4)
                             .accessibilityIdentifier("addRowButton")
+                            exportButtons
                             Divider().padding(.vertical, 8).accessibilityHidden(true)
                             resetButton
                             spreadsheetButton
@@ -243,6 +243,16 @@ struct ContentView: View {
         .padding(.vertical, 8)
     }
 
+    private var totalSummarySection: some View {
+        Text(totalSummary)
+            .font(.title2.bold())
+            .foregroundStyle(hasAnyError ? .red : .primary)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.vertical, 8)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("Total: \(totalSummary)")
+    }
+
     private var totalSection: some View {
         HStack(spacing: 8) {
             Text("Total")
@@ -256,7 +266,7 @@ struct ContentView: View {
             Color.clear.frame(width: 64) // gap aligning with the Add/Subtract picker
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Total: \(formatTotalValue(total.hours)) hours, \(formatTotalValue(total.minutes)) minutes, \(formatTotalValue(total.seconds)) seconds")
+        .accessibilityLabel("Total: \(totalSummary)")
         .font(.body.bold())
         .padding(.horizontal, 4)
     }
@@ -336,6 +346,18 @@ struct ContentView: View {
     }
 
     // MARK: - Helpers
+
+    private var totalSummary: String {
+        if hasAnyError { return "—" }
+        let isNeg = total.hours < 0 || total.minutes < 0 || total.seconds < 0
+        let h = abs(total.hours), m = abs(total.minutes), s = abs(total.seconds)
+        var parts: [String] = []
+        if h != 0 { parts.append("\(formatTotalValue(h)) \(h == 1 ? "hr" : "hrs")") }
+        if m != 0 { parts.append("\(formatTotalValue(m)) min") }
+        if s != 0 || parts.isEmpty { parts.append("\(formatTotalValue(s)) sec") }
+        let result = parts.joined(separator: " ")
+        return isNeg ? "− \(result)" : result
+    }
 
     private func formatTotalValue(_ value: Double) -> String {
         if value == floor(value) { return String(Int(value)) }
