@@ -63,8 +63,41 @@ REQUIREMENTS.md  full feature spec for the Swift app
 CLAUDE.md        this file
 ```
 
+## UX improvements (intuitive-interface branch)
+
+Four changes made to improve discoverability for new users:
+
+1. **+/− segmented picker** (`TimeRowView.swift`) — replaced single toggle button with a `Picker(.segmented)` showing `+` and `−`. Both options always visible so users see it's a choice, not just a button. Tinted green (add) or red (subtract).
+
+2. **Color-coded row backgrounds** (`TimeRowView.swift`) — each row has a faint green or red background matching the picker state. The background and picker tint update together when toggled.
+
+3. **Expanded column headers** (`ContentView.swift`) — `H / M / S` → `Hrs / Min / Sec`.
+
+4. **Persistent usage hint + spreadsheet button** (`ContentView.swift`) — replaced the hidden "How it works" toggle with:
+   - Always-visible one-liner under the title: *"Enter a time in each row and choose Add (+) or Subtract (−). The total updates as you type."*
+   - Small blue "Why not use a spreadsheet?" button at the bottom (collapsible, footnote size)
+
+**Row layout** (both narrow and wide): title field on line 1 full-width; H/M/S fields + +/− picker share line 2. On iOS the title placeholder is just "title"; on macOS/iPadOS it says "title (opt)".
+
+**Wide layout (iPad/Mac):**
+- Sidebar (300pt, left) holds: title, usage hint, export buttons, spreadsheet button, branding
+- Main column (right) holds: total, column headers, rows, Add Another Row, Reset
+- Main column content capped at 560pt wide so rows don't stretch absurdly
+- Add Another Row and Reset buttons capped at 320pt, centered
+- Starts with 5 rows on wide layouts (via `.onAppear`), 2 on iPhone
+- Sidebar background extends to screen edge via `.ignoresSafeArea(edges: .leading)` on the HStack
+
+**Things that didn't work / were reverted:**
+- Keyboard toolbar showing total above the numeric keypad — `Spacer()` inside `ToolbarItemGroup(placement: .keyboard)` creates an invisible tap-blocking overlay; splitting into separate `ToolbarItem` entries also caused severe input issues. Abandoned entirely.
+- Total below the rows — keyboard covers it on iPhone
+
+---
+
 ## Key gotchas discovered
 - **Always run tests on an iPhone simulator** — running on "My Mac" destination causes all UI/accessibility tests to report 0 elements found (macOS accessibility tree is different)
 - **Parallel UI tests**: scheme has `parallelizable = YES` so Xcode spawns 3 simulator clones; each clone shows the app + a no-icon test runner process — both are normal
 - **project.pbxproj uses `PBXFileSystemSynchronizedRootGroup`** — no need to manually register new `.swift` files; Xcode auto-includes everything in the target folders
 - **After the project rename**, `TEST_TARGET_NAME` in the UITests build config was still set to `ElapsedTimeAdder`, causing UI tests to silently not run — fixed by updating all stale name references in `project.pbxproj` via `sed`
+- **SwiftUI keyboard toolbar** (`placement: .keyboard`) is very buggy — `Spacer()` inside `ToolbarItemGroup` creates an invisible overlay that blocks taps on content below; don't use it
+- **Worktree vs main project**: Claude Code runs in a git worktree (`.claude/worktrees/…`) but Xcode opens the main project directory — always edit files in `/Users/allison/htdocs/elapsed-time-calculator/ElapsedTimeCalculator/` not the worktree path
+- **Wide layout safe area**: use `.ignoresSafeArea(edges: .leading)` on the HStack (not just on the background color) to make the sidebar reach the left screen edge on iPad
