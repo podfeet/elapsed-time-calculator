@@ -23,7 +23,18 @@ final class AccessibilityTests: XCTestCase {
         // internal frame math inside ScrollView, not a real user-facing problem.
         try app.performAccessibilityAudit(for: [.sufficientElementDescription, .contrast]) { issue in
             print("AUDIT ISSUE: \(issue.compactDescription) | element: \(issue.element?.debugDescription ?? "unknown")")
-            return true
+            return false
+        }
+    }
+
+    func testAccessibilityAuditWithSpreadsheetNoteExpanded() throws {
+        app.swipeUp()
+        app.buttons["spreadsheetButton"].tap()
+        let note = app.descendants(matching: .any).matching(identifier: "spreadsheetNote").firstMatch
+        XCTAssertTrue(note.waitForExistence(timeout: 2), "Spreadsheet note must appear before auditing")
+        try app.performAccessibilityAudit(for: [.sufficientElementDescription, .contrast]) { issue in
+            print("AUDIT ISSUE (expanded): \(issue.compactDescription) | element: \(issue.element?.debugDescription ?? "unknown")")
+            return false
         }
     }
 

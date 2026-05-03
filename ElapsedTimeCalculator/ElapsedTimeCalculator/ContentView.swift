@@ -90,7 +90,7 @@ struct ContentView: View {
                         rows.append(TimeRow())
                     } label: {
                         Text("Add Another Row")
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(.primary)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 8)
                             .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
@@ -138,7 +138,7 @@ struct ContentView: View {
                 rows.append(TimeRow())
             } label: {
                 Text("Add Another Row")
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
                     .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
@@ -159,7 +159,7 @@ struct ContentView: View {
     private var usageHint: some View {
         Text("Enter a time in each row and choose Add (+) or\nSubtract (−). The total updates as you type.")
             .font(.callout)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(.primary)
             .multilineTextAlignment(.center)
             .frame(maxWidth: 480, alignment: .center)
             .accessibilityIdentifier("usageHint")
@@ -172,17 +172,18 @@ struct ContentView: View {
             } label: {
                 Label(showSpreadsheetNote ? "Hide" : "Why not use a spreadsheet?",
                       systemImage: "tablecells")
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.primary)
                     .font(.footnote)
             }
             .buttonStyle(.plain)
+            .frame(maxWidth: .infinity, alignment: .center)
             .accessibilityLabel(showSpreadsheetNote ? "Hide spreadsheet note" : "Why not use a spreadsheet?")
             .accessibilityIdentifier("spreadsheetButton")
 
             if showSpreadsheetNote {
                 Text("Why not just use Excel, Numbers, or Google Sheets? Because they don't do *elapsed* time — they do absolute time. Add 22:00 + 5:00 in a spreadsheet and you'll get 3:00 AM, not 27:00.")
                     .font(.callout)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.primary)
                     .padding()
                     .background(Color.secondary.opacity(0.08), in: RoundedRectangle(cornerRadius: 10))
                     .transition(.opacity)
@@ -199,7 +200,7 @@ struct ContentView: View {
                 message: Text("Elapsed time data")
             ) {
                 Text("Export CSV")
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
                     .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
@@ -212,7 +213,7 @@ struct ContentView: View {
                 message: Text("Elapsed time data")
             ) {
                 Text("Export HH:MM:SS")
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
                     .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
@@ -230,7 +231,7 @@ struct ContentView: View {
                 message: Text("Elapsed time data")
             ) {
                 Text("Export CSV")
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 24)
@@ -244,7 +245,7 @@ struct ContentView: View {
                 message: Text("Elapsed time data")
             ) {
                 Text("Export HH:MM:SS")
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 24)
@@ -298,7 +299,7 @@ struct ContentView: View {
             rows = [TimeRow(), TimeRow()]
         } label: {
             Text("Reset")
-                .foregroundStyle(.red)
+                .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
                 .background(Color.red.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
@@ -320,8 +321,9 @@ struct ContentView: View {
                 .frame(height: 28)
             Text("A Podfeet App")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.primary)
         }
+        .frame(maxWidth: .infinity, alignment: .center)
         .padding(.top, 4)
         .padding(.bottom, 8)
         .accessibilityElement(children: .ignore)
