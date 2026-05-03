@@ -35,6 +35,7 @@ The original web app (HTML/CSS/JS/jQuery/Bootstrap) lives in `web/` for referenc
 - All tests passing (unit + UI/accessibility) when run on an **iPhone simulator** destination
 - Project renamed from `ElapsedTimeAdder` → `ElapsedTimeCalculator` (folder, scheme, targets)
 - Wide (iPad/Mac) layout uses `NavigationSplitView` — fixes blank white left column that appeared with `NavigationStack` + `WindowGroup`
+- Home screen display name is **"Time Adder"** (set via `INFOPLIST_KEY_CFBundleDisplayName` in `project.pbxproj`); App Store name set separately in App Store Connect as "Elapsed Time Calculator"
 
 ---
 
