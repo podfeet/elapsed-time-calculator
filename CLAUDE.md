@@ -88,7 +88,7 @@ Four changes made to improve discoverability for new users:
    - Always-visible one-liner under the title (centered): *"Enter a time in each row and choose Add (+) or Subtract (−). The total updates as you type."*
    - Small blue "Why not use a spreadsheet?" button at the bottom (collapsible, footnote size)
 
-5. **Plain-English total** (`ContentView.swift`) — iPhone layout shows a `.title2.bold()` summary line (e.g. *"1 hr 23 min 45 sec"*) below the rows instead of the H/M/S boxes. Wide layout keeps the H/M/S boxes in the sidebar column. Export buttons moved to below "Add Another Row".
+5. **Plain-English total** (`ContentView.swift`) — both iPhone and iPad/Mac show a `.title2.bold()` summary line (e.g. *"1 hr 23 min 45 sec"*) below the rows. The H/M/S total boxes (`totalSection`, `totalBox`) have been deleted. Export buttons moved to below "Add Another Row" on iPhone.
 
 **Row layout** (both narrow and wide): title field on line 1 full-width; H/M/S fields + +/− picker share line 2. On iOS the title placeholder is just "title"; on macOS/iPadOS it says "title (opt)".
 
