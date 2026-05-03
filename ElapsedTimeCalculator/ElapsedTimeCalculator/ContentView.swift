@@ -74,6 +74,7 @@ struct ContentView: View {
                         usageHint
                             .plainRow()
                         columnHeaders
+                            .padding(.horizontal, 10)
                             .plainRow(top: 4, bottom: 0)
                         ForEach(rows) { row in
                             TimeRowView(row: row)
@@ -318,7 +319,6 @@ struct ContentView: View {
         }
         .font(.callout.bold())
         .foregroundStyle(.primary)
-        .padding(.horizontal, 4)
         .accessibilityHidden(true)
     }
 
