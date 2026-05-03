@@ -27,101 +27,97 @@ struct ContentView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if isWide {
-                    // MARK: Wide layout — sidebar + main column
-                    HStack(alignment: .top, spacing: 0) {
-
-                        // Left sidebar: title, usage hint, export, branding
-                        ScrollView {
-                            VStack(spacing: 16) {
-                                Text("Elapsed Time Calculator")
-                                    .font(.largeTitle.bold())
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    .multilineTextAlignment(.center)
-                                usageHint
-                                sidebarExportButtons
-                                Spacer(minLength: 32)
-                                spreadsheetButton
-                                podfeetBranding
-                            }
-                            .padding()
-                        }
-                        .frame(width: 300)
-                        .background(Color.secondary.opacity(0.06))
-
-                        Divider()
-
-                        // Right main: column headers, rows, add row, reset
-                        ScrollView {
-                            rowsSection
-                                .padding()
-                        }
-                    }
-                    .ignoresSafeArea(edges: .leading)
-
-                } else {
-                    // MARK: Narrow layout — single column (iPhone)
-                    // List (UITableView) is used instead of ScrollView to avoid the
-                    // multi-tap-required-to-focus bug SwiftUI ScrollView has on iOS.
-                    List {
+        if isWide {
+            // MARK: Wide layout — NavigationSplitView controls the columns so
+            // WindowGroup doesn't insert its own blank primary column on iPad.
+            NavigationSplitView {
+                ScrollView {
+                    VStack(spacing: 16) {
                         Text("Elapsed Time Calculator")
                             .font(.largeTitle.bold())
                             .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
-                            .plainRow()
                         usageHint
-                            .plainRow()
-                        columnHeaders
-                            .padding(.horizontal, 10)
-                            .plainRow(top: 4, bottom: 0)
-                        ForEach(rows) { row in
-                            TimeRowView(row: row)
-                                .plainRow(top: 4, bottom: 4)
-                        }
-                        totalSummarySection
-                            .plainRow()
-                        Button {
-                            rows.append(TimeRow())
-                        } label: {
-                            Text("Add Another Row")
-                                .foregroundStyle(.blue)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 8)
-                                .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityIdentifier("addRowButton")
-                        .plainRow()
-                        exportButtons
-                            .plainRow(top: 0)
-                        Divider()
-                            .plainRow(top: 4, bottom: 4)
-                            .accessibilityHidden(true)
-                        resetButton
-                            .plainRow()
+                        sidebarExportButtons
+                        Spacer(minLength: 32)
                         spreadsheetButton
-                            .plainRow()
                         podfeetBranding
-                            .plainRow(bottom: 8)
                     }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
+                    .padding()
                 }
+                .navigationBarHidden(true)
+                .navigationSplitViewColumnWidth(min: 320, ideal: 640, max: 640)
+                .background(Color.secondary.opacity(0.12))
+                .ignoresSafeArea(edges: .leading)
+            } detail: {
+                ScrollView {
+                    rowsSection
+                        .padding()
+                }
+                .navigationBarHidden(true)
             }
+            .navigationSplitViewStyle(.balanced)
             .onAppear {
-                if isWide, rows.count < 5 {
+                if rows.count < 5 {
                     rows.append(contentsOf: (rows.count..<5).map { _ in TimeRow() })
                 }
             }
-            .navigationTitle("Elapsed Time Calculator")
+
+        } else {
+            // MARK: Narrow layout — single column (iPhone)
+            // List (UITableView) avoids the multi-tap-required-to-focus bug in ScrollView.
+            NavigationStack {
+                List {
+                    Text("Elapsed Time Calculator")
+                        .font(.largeTitle.bold())
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .multilineTextAlignment(.center)
+                        .plainRow()
+                    usageHint
+                        .plainRow()
+                    columnHeaders
+                        .padding(.horizontal, 10)
+                        .plainRow(top: 4, bottom: 0)
+                    ForEach(rows) { row in
+                        TimeRowView(row: row)
+                            .plainRow(top: 4, bottom: 4)
+                    }
+                    totalSummarySection
+                        .plainRow()
+                    Button {
+                        rows.append(TimeRow())
+                    } label: {
+                        Text("Add Another Row")
+                            .foregroundStyle(.blue)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 8)
+                            .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 8))
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("addRowButton")
+                    .plainRow()
+                    exportButtons
+                        .plainRow(top: 0)
+                    Divider()
+                        .plainRow(top: 4, bottom: 4)
+                        .accessibilityHidden(true)
+                    resetButton
+                        .plainRow()
+                    spreadsheetButton
+                        .plainRow()
+                    podfeetBranding
+                        .plainRow(bottom: 8)
+                }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .navigationTitle("Elapsed Time Calculator")
 #if os(iOS)
-            .toolbar(.hidden, for: .navigationBar)
+                .toolbar(.hidden, for: .navigationBar)
 #elseif os(macOS)
-            .toolbar(.hidden, for: .windowToolbar)
-            .ignoresSafeArea(edges: .top)
+                .toolbar(.hidden, for: .windowToolbar)
+                .ignoresSafeArea(edges: .top)
 #endif
+            }
         }
     }
 
@@ -157,11 +153,11 @@ struct ContentView: View {
     // MARK: - Subviews
 
     private var usageHint: some View {
-        Text("Enter a time in each row and choose Add (+) or Subtract (−). The total updates as you type.")
+        Text("Enter a time in each row and choose Add (+) or Subtract (−).\nThe total updates as you type.")
             .font(.callout)
             .foregroundStyle(.secondary)
             .multilineTextAlignment(.center)
-            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(maxWidth: 480, alignment: .center)
             .accessibilityIdentifier("usageHint")
     }
 
@@ -252,7 +248,7 @@ struct ContentView: View {
             }
             .buttonStyle(.plain)
         }
-        .fixedSize(horizontal: true, vertical: false)
+        .frame(width: 320)
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
     }
