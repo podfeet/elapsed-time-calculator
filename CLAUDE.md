@@ -92,6 +92,8 @@ Four changes made to improve discoverability for new users:
 
 6. **Tab-to-add-row** (`TimeRowView.swift`) — pressing Tab from the last row's seconds field adds a new row. Implemented via `TabToAddRowModifier` (private `ViewModifier`) applied only to the last row using `isLast` + `onAddRow` params passed from ContentView's ForEach. Error message updated to "Positive numbers, you silly goose!"
 
+7. **WCAG AA contrast fixes** (`ContentView.swift`) — all tinted buttons (Add Another Row, Export CSV, Export HH:MM:SS, Reset) changed from colored text on tinted background to `.primary` text; usage hint, spreadsheet button label, and "A Podfeet App" branding changed from `.secondary` to `.primary`. Background tints remain as color cues. Spreadsheet note text changed from `.secondary` to `.primary`.
+
 **Row layout** (both narrow and wide): title field on line 1 full-width; H/M/S fields + +/− picker share line 2. On iOS the title placeholder is just "title"; on macOS/iPadOS it says "title (opt)".
 
 **Wide layout (iPad/Mac):**
@@ -125,3 +127,9 @@ Four changes made to improve discoverability for new users:
 - **`NavigationSplitView` blank column**: `WindowGroup` on iPad creates a `UISplitViewController` primary column regardless of `NavigationStack` — only `NavigationSplitView` gives you explicit control over both columns. Use it for any wide layout with a sidebar.
 - **`.prominentDetail` hides the sidebar** — use `.balanced` to keep both columns visible
 - **`onKeyPress` on multiple TextFields inside `List` breaks touch delivery** — even returning `.ignored` is enough to disrupt `UITableView`'s touch handling. Fix: use a `ViewModifier` that conditionally applies `onKeyPress` only when needed (e.g. `isLast`), so non-target rows get zero modification. See `TabToAddRowModifier` in `TimeRowView.swift`.
+- **UI tests must run on iPhone simulator** — Mac and iPad destinations produce wrong accessibility trees; always use iPhone simulator for `AccessibilityTests`
+- **Decimal pad prevents typing letters in UI tests** — `typeText("abc")` fails on fields with `.keyboardType(.decimalPad)`; use `typeText("1..")` instead (double decimal is invalid per `isValidTimeInput` and typeable on decimal pad)
+- **Segmented Picker is `segmentedControls` in XCTest**, not `buttons` — use `app.segmentedControls.matching(identifier:)` and check individual segment selection with `.buttons["+"].isSelected`
+- **List uses `app.swipeUp()` not `app.scrollViews`** — the narrow layout's `List` is a `UITableView`; swiping on the app directly is the most reliable approach
+- **WebKit axbundle duplicate warning** in test output is a simulator runtime issue, not an app bug — ignore it
+- **WCAG AA contrast**: `.secondary` foreground color (~2.85:1 on white) fails AA; `.blue` text on `.blue.opacity(0.12)` background (~2.5:1) also fails. Use `.primary` text with tinted backgrounds for color coding instead.
