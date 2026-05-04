@@ -1,0 +1,40 @@
+<svg width="680" height="680" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3A8ED4"/>
+      <stop offset="100%" stop-color="#64C8F0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect id="background" width="680" height="680" rx="150" fill="url(#bg)"/>
+
+  <!-- Plus - vertical bar -->
+  <line id="plus-vertical" x1="170" y1="130" x2="170" y2="210" stroke="white" stroke-width="36" stroke-linecap="round"/>
+
+  <!-- Plus - horizontal bar -->
+  <line id="plus-horizontal" x1="130" y1="170" x2="210" y2="170" stroke="white" stroke-width="36" stroke-linecap="round"/>
+
+  <!-- Minus -->
+  <line id="minus" x1="470" y1="490" x2="550" y2="490" stroke="white" stroke-width="36" stroke-linecap="round"/>
+
+  <!-- Stopwatch - crown stem -->
+  <rect id="crown-stem" x="324" y="148" width="32" height="44" rx="9" fill="white"/>
+
+  <!-- Stopwatch - crown button -->
+  <rect id="crown-button" x="306" y="130" width="68" height="28" rx="14" fill="white"/>
+
+  <!-- Stopwatch - outer ring -->
+  <circle id="watch-ring" cx="340" cy="370" r="175" fill="none" stroke="white" stroke-width="30"/>
+
+  <!-- Stopwatch - quarter sweep (12 o'clock to 3 o'clock) -->
+  <!-- Center: 340,370  Inner radius: 155 -->
+  <!-- 12 o'clock point: 340, 215 -->
+  <!-- 3 o'clock point: 495, 370 -->
+  <path id="sweep" d="M340,370 L340,215 A155,155 0 0,1 495,370 Z" fill="white"/>
+
+  <!-- Stopwatch - center dot -->
+  <circle id="center-dot" cx="340" cy="370" r="16" fill="white"/>
+
+</svg>
