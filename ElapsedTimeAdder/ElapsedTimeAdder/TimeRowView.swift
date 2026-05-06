@@ -78,8 +78,13 @@ struct TimeRowView: View {
                     Text("−").tag(true).accessibilityLabel("Subtract")
                 }
                 .pickerStyle(.segmented)
+                .labelsHidden()
                 .frame(width: 64)
+#if os(macOS)
+                .tint(row.isSubtracting ? Color.red.opacity(0.55) : Color.green.opacity(0.55))
+#else
                 .tint(row.isSubtracting ? .red : .green)
+#endif
                 .accessibilityLabel("Add or subtract this row")
                 .accessibilityIdentifier("toggleButton")
             }
