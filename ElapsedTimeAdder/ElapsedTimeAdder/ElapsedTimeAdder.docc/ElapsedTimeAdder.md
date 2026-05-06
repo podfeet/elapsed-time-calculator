@@ -4,7 +4,7 @@ Add and subtract elapsed times the way spreadsheets can't.
 
 ## Overview
 
-Elapsed Time Calculator is a native SwiftUI app for iOS and macOS that lets you
+Elapsed Time Adder is a native SwiftUI app for iOS and macOS that lets you
 add and subtract durations — something spreadsheet apps like Excel, Numbers, and
 Google Sheets cannot do correctly because they treat time as a clock position
 rather than an elapsed quantity.

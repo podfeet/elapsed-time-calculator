@@ -28,7 +28,7 @@ final class AccessibilityTests: XCTestCase {
     }
 
     func testAccessibilityAuditWithSpreadsheetNoteExpanded() throws {
-        app.swipeUp()
+        app.swipeUp(velocity: .slow)
         app.buttons["spreadsheetButton"].tap()
         let note = app.descendants(matching: .any).matching(identifier: "spreadsheetNote").firstMatch
         XCTAssertTrue(note.waitForExistence(timeout: 2), "Spreadsheet note must appear before auditing")
@@ -59,8 +59,13 @@ final class AccessibilityTests: XCTestCase {
         let toggles = app.segmentedControls.matching(identifier: "toggleButton")
         XCTAssertGreaterThan(toggles.count, 0,
                              "+/− segmented controls must exist and have an accessibility identifier")
-        XCTAssertEqual(toggles.firstMatch.label, "Add or subtract this row",
-                       "Toggle accessibility label must be 'Add or subtract this row'")
+        // SwiftUI's segmented Picker exposes the label on a wrapper element, not the
+        // UISegmentedControl itself, so XCTest sees "" for the control label.
+        // Verify the segments have meaningful labels instead.
+        XCTAssertTrue(toggles.firstMatch.buttons["Add"].exists,
+                      "Add segment must exist with 'Add' accessibility label")
+        XCTAssertTrue(toggles.firstMatch.buttons["Subtract"].exists,
+                      "Subtract segment must exist with 'Subtract' accessibility label")
     }
 
     // MARK: - Text fields are labelled for VoiceOver
@@ -86,7 +91,7 @@ final class AccessibilityTests: XCTestCase {
         let button = app.buttons["spreadsheetButton"]
         XCTAssertTrue(button.exists, "spreadsheetButton must exist")
         // Scroll down so the button is visible before tapping
-        app.swipeUp()
+        app.swipeUp(velocity: .slow)
         XCTAssertTrue(button.isHittable, "spreadsheetButton must be hittable")
         button.tap()
         let note = app.descendants(matching: .any).matching(identifier: "spreadsheetNote").firstMatch
@@ -126,8 +131,8 @@ final class AccessibilityTests: XCTestCase {
 
         // 3. Toggle the first row from + to −
         let firstToggle = app.segmentedControls.matching(identifier: "toggleButton").firstMatch
-        firstToggle.buttons["−"].tap()
-        XCTAssertTrue(firstToggle.buttons["−"].isSelected, "Toggle should switch to subtract")
+        firstToggle.buttons["Subtract"].tap()
+        XCTAssertTrue(firstToggle.buttons["Subtract"].isSelected, "Toggle should switch to subtract")
 
         // 4. Add a new row
         app.buttons["addRowButton"].tap()
@@ -140,7 +145,7 @@ final class AccessibilityTests: XCTestCase {
         newRowHours.typeText("3")
 
         // 6. Scroll down to reveal Reset and tap it
-        app.swipeUp()
+        app.swipeUp(velocity: .slow)
         app.buttons["resetButton"].tap()
 
         // 7. Verify everything is back to the initial state
@@ -155,7 +160,7 @@ final class AccessibilityTests: XCTestCase {
         XCTAssertTrue(titleValue == "" || titleValue == "title" || titleValue == "title (opt)",
                       "Title field should be empty after reset (got: \(titleValue))")
 
-        XCTAssertTrue(app.segmentedControls.matching(identifier: "toggleButton").firstMatch.buttons["+"].isSelected,
+        XCTAssertTrue(app.segmentedControls.matching(identifier: "toggleButton").firstMatch.buttons["Add"].isSelected,
                       "Toggle should be back to + after reset")
     }
 

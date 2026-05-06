@@ -73,9 +73,9 @@ struct TimeRowView: View {
 #endif
 
                 // +/− segmented picker
-                Picker("", selection: $row.isSubtracting) {
-                    Text("+").tag(false)
-                    Text("−").tag(true)
+                Picker("Add or subtract this row", selection: $row.isSubtracting) {
+                    Text("+").tag(false).accessibilityLabel("Add")
+                    Text("−").tag(true).accessibilityLabel("Subtract")
                 }
                 .pickerStyle(.segmented)
                 .frame(width: 64)
