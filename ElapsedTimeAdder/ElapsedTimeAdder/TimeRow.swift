@@ -1,6 +1,6 @@
 //
 //  TimeRow.swift
-//  ElapsedTimeCalculator
+//  ElapsedTimeAdder
 //
 //  Data model for a single time row.
 

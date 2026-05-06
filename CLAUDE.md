@@ -33,33 +33,33 @@ The original web app (HTML/CSS/JS/jQuery/Bootstrap) lives in `web/` for referenc
 ## Current status
 - Xcode project fully built and working — all core features implemented
 - All tests passing (unit + UI/accessibility) when run on an **iPhone simulator** destination
-- Project renamed from `ElapsedTimeAdder` → `ElapsedTimeCalculator` (folder, scheme, targets)
+- Project renamed from `ElapsedTimeAdder` → `ElapsedTimeAdder` (folder, scheme, targets)
 - Wide (iPad/Mac) layout uses `NavigationSplitView` — fixes blank white left column that appeared with `NavigationStack` + `WindowGroup`
 - Home screen display name is **"Time Adder"** (set via `INFOPLIST_KEY_CFBundleDisplayName` in `project.pbxproj`); App Store name set separately in App Store Connect as "Elapsed Time Calculator"
-- DocC documentation added for non-UI code (`TimeMath.swift`, `ExportHelpers.swift`, `TimeRow.swift`) — catalog at `ElapsedTimeCalculator.docc/`. Build with **Product → Build Documentation** in Xcode.
-- App icon updated — source at `assets/ElapsedTimeCalculatorIcon.png` (1024×1024); all required sizes generated via `sips` into `Assets.xcassets/AppIcon.appiconset/`
+- DocC documentation added for non-UI code (`TimeMath.swift`, `ExportHelpers.swift`, `TimeRow.swift`) — catalog at `ElapsedTimeAdder.docc/`. Build with **Product → Build Documentation** in Xcode.
+- App icon updated — source at `assets/ElapsedTimeAdderIcon.png` (1024×1024); all required sizes generated via `sips` into `Assets.xcassets/AppIcon.appiconset/`
 
 ---
 
 ## Xcode project layout
 ```
-ElapsedTimeCalculator/                     Xcode project root
-  ElapsedTimeCalculator.xcodeproj/
+ElapsedTimeAdder/                     Xcode project root
+  ElapsedTimeAdder.xcodeproj/
     xcshareddata/xcschemes/
-      ElapsedTimeAdder.xcscheme            shared scheme (still named after old project — fine)
-  ElapsedTimeCalculator/                   app source
-    ElapsedTimeCalculatorApp.swift
+      ElapsedTimeAdder.xcscheme
+  ElapsedTimeAdder/                   app source
+    ElapsedTimeAdderApp.swift
     ContentView.swift
     TimeRow.swift                          @Observable model
     TimeRowView.swift                      single row UI + validation
     TimeMath.swift                         port of web/src/timeMath.js
     ExportHelpers.swift                    CSV + HH:MM:SS export
     Assets.xcassets/                       app icon + PodfeetLogo
-  ElapsedTimeCalculatorTests/              unit tests
+  ElapsedTimeAdderTests/              unit tests
     TimeMathTests.swift
     ValidationTests.swift
     ExportTests.swift
-  ElapsedTimeCalculatorUITests/            UI + accessibility tests
+  ElapsedTimeAdderUITests/            UI + accessibility tests
     AccessibilityTests.swift
 web/          original web app (reference only, do not modify)
 REQUIREMENTS.md  full feature spec for the Swift app
@@ -125,7 +125,7 @@ Four changes made to improve discoverability for new users:
 - **Negative padding** (e.g. `.padding(.bottom, -10)`) moves views visually but leaves the original layout frame in place, causing invisible hit-area overlap that blocks taps — never use it
 - **`UIScrollView.appearance().delaysContentTouches = false`** breaks ALL SwiftUI gesture handling app-wide — never use it
 - **iPhone narrow layout uses `List` not `ScrollView`** — see "iPhone layout" section above for details and the `columnHeaders` alignment fix
-- **Worktree vs main project**: Claude Code runs in a git worktree (`.claude/worktrees/…`) but Xcode opens the main project directory — always edit files in `/Users/allison/htdocs/elapsed-time-calculator/ElapsedTimeCalculator/` not the worktree path
+- **Worktree vs main project**: Claude Code runs in a git worktree (`.claude/worktrees/…`) but Xcode opens the main project directory — always edit files in `/Users/allison/htdocs/elapsed-time-calculator/ElapsedTimeAdder/` not the worktree path
 - **Wide layout safe area**: use `.ignoresSafeArea(edges: .leading)` on the sidebar `ScrollView` inside `NavigationSplitView` to make the sidebar background reach the left screen edge on iPad
 - **`NavigationSplitView` blank column**: `WindowGroup` on iPad creates a `UISplitViewController` primary column regardless of `NavigationStack` — only `NavigationSplitView` gives you explicit control over both columns. Use it for any wide layout with a sidebar.
 - **`.prominentDetail` hides the sidebar** — use `.balanced` to keep both columns visible
@@ -136,5 +136,5 @@ Four changes made to improve discoverability for new users:
 - **List uses `app.swipeUp()` not `app.scrollViews`** — the narrow layout's `List` is a `UITableView`; swiping on the app directly is the most reliable approach
 - **WebKit axbundle duplicate warning** in test output is a simulator runtime issue, not an app bug — ignore it
 - **Free Apple Developer account certificates expire every 7 days** — when this happens, go to Xcode → Settings → Accounts → Manage Certificates, delete the expired certificate, create a new Apple Development one, then clean build (Cmd+Shift+K) and rebuild. Paid account ($99/year) required for TestFlight and App Store.
-- **Icon sizes**: `@2x` variants must be double the logical pixel size (e.g. `512@2x` = 1024px, `256@2x` = 512px, `128@2x` = 256px). Use `sips -z <h> <w> source --out dest` to generate. Source file lives at `assets/ElapsedTimeCalculatorIcon.png`.
+- **Icon sizes**: `@2x` variants must be double the logical pixel size (e.g. `512@2x` = 1024px, `256@2x` = 512px, `128@2x` = 256px). Use `sips -z <h> <w> source --out dest` to generate. Source file lives at `assets/ElapsedTimeAdderIcon.png`.
 - **WCAG AA contrast**: `.secondary` foreground color (~2.85:1 on white) fails AA; `.blue` text on `.blue.opacity(0.12)` background (~2.5:1) also fails. Use `.primary` text with tinted backgrounds for color coding instead.

@@ -1,4 +1,4 @@
-# ``ElapsedTimeCalculator``
+# ``ElapsedTimeAdder``
 
 Add and subtract elapsed times the way spreadsheets can't.
 

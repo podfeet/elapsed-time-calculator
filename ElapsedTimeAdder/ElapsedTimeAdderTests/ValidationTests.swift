@@ -1,11 +1,11 @@
 //
 //  ValidationTests.swift
-//  ElapsedTimeCalculatorTests
+//  ElapsedTimeAdderTests
 //
 //  Unit tests for isValidTimeInput() — the H/M/S field validation function.
 
 import XCTest
-@testable import ElapsedTimeCalculator
+@testable import ElapsedTimeAdder
 
 final class ValidationTests: XCTestCase {
 

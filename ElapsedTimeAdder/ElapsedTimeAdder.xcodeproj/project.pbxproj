@@ -12,37 +12,37 @@
 			containerPortal = 37D9E9362F9FD9D800A68EC9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 37D9E93D2F9FD9D800A68EC9;
-			remoteInfo = ElapsedTimeCalculator;
+			remoteInfo = ElapsedTimeAdder;
 		};
 		37D9E96D2FA036AC00A68EC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 37D9E9362F9FD9D800A68EC9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 37D9E93D2F9FD9D800A68EC9;
-			remoteInfo = ElapsedTimeCalculator;
+			remoteInfo = ElapsedTimeAdder;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElapsedTimeCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		37D9E9582FA0367900A68EC9 /* ElapsedTimeCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElapsedTimeCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		37D9E9692FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElapsedTimeCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeAdder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElapsedTimeAdder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D9E9582FA0367900A68EC9 /* ElapsedTimeAdderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElapsedTimeAdderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37D9E9692FA036AC00A68EC9 /* ElapsedTimeAdderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElapsedTimeAdderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		37D9E9402F9FD9D800A68EC9 /* ElapsedTimeCalculator */ = {
+		37D9E9402F9FD9D800A68EC9 /* ElapsedTimeAdder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ElapsedTimeCalculator;
+			path = ElapsedTimeAdder;
 			sourceTree = "<group>";
 		};
-		37D9E9592FA0367900A68EC9 /* ElapsedTimeCalculatorTests */ = {
+		37D9E9592FA0367900A68EC9 /* ElapsedTimeAdderTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ElapsedTimeCalculatorTests;
+			path = ElapsedTimeAdderTests;
 			sourceTree = "<group>";
 		};
-		37D9E96A2FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests */ = {
+		37D9E96A2FA036AC00A68EC9 /* ElapsedTimeAdderUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ElapsedTimeCalculatorUITests;
+			path = ElapsedTimeAdderUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		37D9E9352F9FD9D800A68EC9 = {
 			isa = PBXGroup;
 			children = (
-				37D9E9402F9FD9D800A68EC9 /* ElapsedTimeCalculator */,
-				37D9E9592FA0367900A68EC9 /* ElapsedTimeCalculatorTests */,
-				37D9E96A2FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests */,
+				37D9E9402F9FD9D800A68EC9 /* ElapsedTimeAdder */,
+				37D9E9592FA0367900A68EC9 /* ElapsedTimeAdderTests */,
+				37D9E96A2FA036AC00A68EC9 /* ElapsedTimeAdderUITests */,
 				37D9E93F2F9FD9D800A68EC9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		37D9E93F2F9FD9D800A68EC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeCalculator.app */,
-				37D9E9582FA0367900A68EC9 /* ElapsedTimeCalculatorTests.xctest */,
-				37D9E9692FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests.xctest */,
+				37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeAdder.app */,
+				37D9E9582FA0367900A68EC9 /* ElapsedTimeAdderTests.xctest */,
+				37D9E9692FA036AC00A68EC9 /* ElapsedTimeAdderUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeCalculator */ = {
+		37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeAdder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37D9E9492F9FD9DA00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeCalculator" */;
+			buildConfigurationList = 37D9E9492F9FD9DA00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdder" */;
 			buildPhases = (
 				37D9E93A2F9FD9D800A68EC9 /* Sources */,
 				37D9E93B2F9FD9D800A68EC9 /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				37D9E9402F9FD9D800A68EC9 /* ElapsedTimeCalculator */,
+				37D9E9402F9FD9D800A68EC9 /* ElapsedTimeAdder */,
 			);
-			name = ElapsedTimeCalculator;
+			name = ElapsedTimeAdder;
 			packageProductDependencies = (
 			);
-			productName = ElapsedTimeCalculator;
-			productReference = 37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeCalculator.app */;
+			productName = ElapsedTimeAdder;
+			productReference = 37D9E93E2F9FD9D800A68EC9 /* ElapsedTimeAdder.app */;
 			productType = "com.apple.product-type.application";
 		};
-		37D9E9572FA0367900A68EC9 /* ElapsedTimeCalculatorTests */ = {
+		37D9E9572FA0367900A68EC9 /* ElapsedTimeAdderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37D9E95E2FA0367900A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeCalculatorTests" */;
+			buildConfigurationList = 37D9E95E2FA0367900A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderTests" */;
 			buildPhases = (
 				37D9E9542FA0367900A68EC9 /* Sources */,
 				37D9E9552FA0367900A68EC9 /* Frameworks */,
@@ -131,18 +131,18 @@
 				37D9E95D2FA0367900A68EC9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				37D9E9592FA0367900A68EC9 /* ElapsedTimeCalculatorTests */,
+				37D9E9592FA0367900A68EC9 /* ElapsedTimeAdderTests */,
 			);
-			name = ElapsedTimeCalculatorTests;
+			name = ElapsedTimeAdderTests;
 			packageProductDependencies = (
 			);
-			productName = ElapsedTimeCalculatorTests;
-			productReference = 37D9E9582FA0367900A68EC9 /* ElapsedTimeCalculatorTests.xctest */;
+			productName = ElapsedTimeAdderTests;
+			productReference = 37D9E9582FA0367900A68EC9 /* ElapsedTimeAdderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		37D9E9682FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests */ = {
+		37D9E9682FA036AC00A68EC9 /* ElapsedTimeAdderUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37D9E96F2FA036AC00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeCalculatorUITests" */;
+			buildConfigurationList = 37D9E96F2FA036AC00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderUITests" */;
 			buildPhases = (
 				37D9E9652FA036AC00A68EC9 /* Sources */,
 				37D9E9662FA036AC00A68EC9 /* Frameworks */,
@@ -154,13 +154,13 @@
 				37D9E96E2FA036AC00A68EC9 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				37D9E96A2FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests */,
+				37D9E96A2FA036AC00A68EC9 /* ElapsedTimeAdderUITests */,
 			);
-			name = ElapsedTimeCalculatorUITests;
+			name = ElapsedTimeAdderUITests;
 			packageProductDependencies = (
 			);
-			productName = ElapsedTimeCalculatorUITests;
-			productReference = 37D9E9692FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests.xctest */;
+			productName = ElapsedTimeAdderUITests;
+			productReference = 37D9E9692FA036AC00A68EC9 /* ElapsedTimeAdderUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 37D9E9392F9FD9D800A68EC9 /* Build configuration list for PBXProject "ElapsedTimeCalculator" */;
+			buildConfigurationList = 37D9E9392F9FD9D800A68EC9 /* Build configuration list for PBXProject "ElapsedTimeAdder" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeCalculator */,
-				37D9E9572FA0367900A68EC9 /* ElapsedTimeCalculatorTests */,
-				37D9E9682FA036AC00A68EC9 /* ElapsedTimeCalculatorUITests */,
+				37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeAdder */,
+				37D9E9572FA0367900A68EC9 /* ElapsedTimeAdderTests */,
+				37D9E9682FA036AC00A68EC9 /* ElapsedTimeAdderUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -262,12 +262,12 @@
 				ios,
 				macos,
 			);
-			target = 37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeCalculator */;
+			target = 37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeAdder */;
 			targetProxy = 37D9E95C2FA0367900A68EC9 /* PBXContainerItemProxy */;
 		};
 		37D9E96E2FA036AC00A68EC9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeCalculator */;
+			target = 37D9E93D2F9FD9D800A68EC9 /* ElapsedTimeAdder */;
 			targetProxy = 37D9E96D2FA036AC00A68EC9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -499,7 +499,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElapsedTimeCalculator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElapsedTimeCalculator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElapsedTimeAdder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElapsedTimeAdder";
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Debug;
@@ -528,7 +528,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElapsedTimeCalculator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElapsedTimeCalculator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElapsedTimeAdder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ElapsedTimeAdder";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
@@ -553,7 +553,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ElapsedTimeCalculator;
+				TEST_TARGET_NAME = ElapsedTimeAdder;
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Debug;
@@ -577,7 +577,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ElapsedTimeCalculator;
+				TEST_TARGET_NAME = ElapsedTimeAdder;
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
@@ -586,7 +586,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		37D9E9392F9FD9D800A68EC9 /* Build configuration list for PBXProject "ElapsedTimeCalculator" */ = {
+		37D9E9392F9FD9D800A68EC9 /* Build configuration list for PBXProject "ElapsedTimeAdder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37D9E9472F9FD9DA00A68EC9 /* Debug */,
@@ -595,7 +595,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37D9E9492F9FD9DA00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeCalculator" */ = {
+		37D9E9492F9FD9DA00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37D9E94A2F9FD9DA00A68EC9 /* Debug */,
@@ -604,7 +604,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37D9E95E2FA0367900A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeCalculatorTests" */ = {
+		37D9E95E2FA0367900A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37D9E95F2FA0367900A68EC9 /* Debug */,
@@ -613,7 +613,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37D9E96F2FA036AC00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeCalculatorUITests" */ = {
+		37D9E96F2FA036AC00A68EC9 /* Build configuration list for PBXNativeTarget "ElapsedTimeAdderUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37D9E9702FA036AC00A68EC9 /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  ElapsedTimeCalculator
+//  ElapsedTimeAdder
 //
 //  Created by Allison on 4/27/26.
 //
@@ -33,7 +33,7 @@ struct ContentView: View {
             NavigationSplitView {
                 ScrollView {
                     VStack(spacing: 16) {
-                        Text("Elapsed Time Calculator")
+                        Text("Elapsed Time Adder")
                             .font(.largeTitle.bold())
                             .frame(maxWidth: .infinity, alignment: .center)
                             .multilineTextAlignment(.center)
@@ -68,7 +68,7 @@ struct ContentView: View {
             // List (UITableView) avoids the multi-tap-required-to-focus bug in ScrollView.
             NavigationStack {
                 List {
-                    Text("Elapsed Time Calculator")
+                    Text("Elapsed Time Adder")
                         .font(.largeTitle.bold())
                         .frame(maxWidth: .infinity, alignment: .center)
                         .multilineTextAlignment(.center)
@@ -112,7 +112,7 @@ struct ContentView: View {
                 }
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
-                .navigationTitle("Elapsed Time Calculator")
+                .navigationTitle("Elapsed Time Adder")
 #if os(iOS)
                 .toolbar(.hidden, for: .navigationBar)
 #elseif os(macOS)

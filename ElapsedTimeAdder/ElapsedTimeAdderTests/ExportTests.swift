@@ -1,11 +1,11 @@
 //
 //  ExportTests.swift
-//  ElapsedTimeCalculatorTests
+//  ElapsedTimeAdderTests
 //
 //  Unit tests for CSV and HH:MM:SS export formatting.
 
 import XCTest
-@testable import ElapsedTimeCalculator
+@testable import ElapsedTimeAdder
 
 final class ExportTests: XCTestCase {
 
