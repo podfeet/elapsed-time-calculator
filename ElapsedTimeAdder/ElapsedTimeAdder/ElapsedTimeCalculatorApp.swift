@@ -12,6 +12,9 @@ struct ElapsedTimeAdderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+#if os(macOS)
+                .frame(minWidth: 680, minHeight: 680)
+#endif
         }
     }
 }

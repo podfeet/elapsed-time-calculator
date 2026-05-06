@@ -45,8 +45,14 @@ struct ContentView: View {
                     }
                     .padding()
                 }
-                .navigationBarHidden(true)
+#if os(iOS)
+                .toolbar(.hidden, for: .navigationBar)
+#endif
+#if os(iOS)
                 .navigationSplitViewColumnWidth(min: 320, ideal: 640, max: 640)
+#else
+                .navigationSplitViewColumnWidth(min: 220, ideal: 300, max: 380)
+#endif
                 .background(Color.secondary.opacity(0.12))
                 .ignoresSafeArea(edges: .leading)
             } detail: {
@@ -54,7 +60,10 @@ struct ContentView: View {
                     rowsSection
                         .padding()
                 }
-                .navigationBarHidden(true)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+#if os(iOS)
+                .toolbar(.hidden, for: .navigationBar)
+#endif
             }
             .navigationSplitViewStyle(.balanced)
             .onAppear {
@@ -152,6 +161,7 @@ struct ContentView: View {
             resetButton
         }
         .frame(maxWidth: 560)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     // MARK: - Subviews
