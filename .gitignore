@@ -23,3 +23,7 @@ DerivedData/
 
 # CocoaPods (if ever used)
 Pods/
+
+
+docs/Gemfile.lock
+/docs/_site
