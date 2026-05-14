@@ -1,6 +1,6 @@
 ---
 title: Home
 ---
-# Hello World!
+# Elapsed Time Adder
 
-Jekyll here we come
+Future home of the Elapsed Time Adder app for macOS and iOS that helps you add (and subtract) elapsed time.
