@@ -3,13 +3,19 @@ title: Home
 ---
 # Elapsed Time Adder
 
+<div class="float-end ms-3 mb-3">
+  <img src="/assets/images/ElapsedTimeAdderIcon.png" alt="Elapsed Time Adder logo" style="width: 200px;">
+</div>
+
 Future home of the Elapsed Time Adder app for macOS and iOS that helps you add (and subtract) elapsed time.
+
+Created by Allison Sheridan, the host of the [Podfeet Podcasts](https://www.podfeet.com) and co-host of [Programming By Stealth with Bart Busschots](https://pbs.bartificer.net).
 
 ## Download
 
 When Elapsed Time Adder is available, you can download it from the [App Store](https://apps.apple.com/app/XXXXXXX).
 
-## Features
+## What's it for?
 
 Elapsed Time Adder runs on iOS, iPadOS, and macOS to help you add and subtract elapsed time. 
 
