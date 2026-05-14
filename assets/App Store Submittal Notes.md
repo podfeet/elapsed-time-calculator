@@ -36,7 +36,7 @@ Promo        0:03:20
 
 > Promotional text lets you inform your App Store visitors of any current app features without requiring an updated submission. This text will appear above your description on the App Store for customers with devices running ios 11 or later, and macos 10.13 or later.
 
-
+Finally, a calculator that understands elapsed time. Add splits, segments, and durations on iPhone, iPad, and Mac. Spreadsheets can't do this — we can.
 
 ### Description
 
@@ -48,7 +48,7 @@ You might ask why not just use a spreadsheet for this? Sadly, while spreadsheets
 
 If you need to add split times for running or walking, or keep track of time segments in audio or video recording, or time spent on projects, all of these efforts work great with ElapsedTimeAdder.
 
-Enter the times in each row, along with an optional title for each row, and watch the total update automatically in a plain-language way (e.g. "1 hr 23 min 45 sec").
+Enter the times in each row, along with an optional title for each row, and watch the total update automatically in a plain-language way (e.g., "1 hr 23 min 45 sec").
 
 You can type 384.6 seconds, or 74 minutes, and Elapsed Time Adder will easily work with it. If you want to subtract a row, simply hit the +/- toggle, and you'll see the row turn from green to pink.
 
@@ -62,5 +62,37 @@ When you're finished, you can export your data to a CSV suitable for opening in 
 
 > Include one or more keywords that describe your app. Keywords make App Store search results more accurate. Separate keywords with an English comma, Chinese comma, or a mix of both.
 
-time, elapsed time, time math, elapsed time calculator, add time, subtract time, elapsed time adder,
+Claude says 100 characters max - this is 100 characters
+
+==time,time math,elapsed time calculator,add time,subtract time,split time,workout times,time segments==
+
+## Marketing and Support URLs
+
+**Claude's suggestion:**
+
+- **Marketing URL**: GitHub Pages with a custom subdomain (`timeadder.podfeet.com`) — looks professional, free, easy to update
+- **Support URL**: A page on that same GitHub Pages site with a brief FAQ and your contact email — solves the "need a GitHub account" problem while keeping everything in one place
+
+That way both URLs live on GitHub Pages, you don't have to touch your WordPress site at all, and you have one tidy place to maintain app info. You could even mention it on your podcast since it's a clean URL.
+
+To create the subdomain timeadder.podfeet.com:
+
+**Step 1: Create the DNS record in DigitalOcean**
+
+1. Log into DigitalOcean → Networking → Domains
+2. Find `podfeet.com`
+3. Add a new record:
+   - Type: `CNAME`
+   - Hostname: `timeadder`
+   - Value: `yourgithubusername.github.io.` (note the trailing dot)
+4. Save it
+
+**Step 2: Configure GitHub Pages to use your custom domain**
+
+1. In your GitHub repo for the Pages site, go to Settings → Pages
+2. Under "Custom domain" enter `timeadder.podfeet.com`
+3. Save — GitHub will add a `CNAME` file to your repo automatically
+4. Check "Enforce HTTPS" once the DNS propagates (can take a few minutes to a few hours)
+
+**That's it** — no nginx config needed since the traffic goes straight to GitHub's servers, not your DigitalOcean droplet.
 
