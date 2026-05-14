@@ -8,6 +8,10 @@
 </head>
 <body>
 <main class="container pt-3">
+	<div class="alert alert-info alert-dismissible fade show" role="alert">
+  Click my close button to prove that Bootstrap JavaScript is working!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
     {{ content }}
 </main>
 <script src="{{ '/assets/js/bootstrap.bundle.min.js' | relative_url }}"></script>
