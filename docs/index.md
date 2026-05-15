@@ -1,8 +1,8 @@
 ---
 title: Home
 ---
-<div class="float-start ms-3 mb-3">
-  <img src="/assets/images/ElapsedTimeAdderIcon.png" alt="Elapsed Time Adder logo" style="width: 200px;">
+<div class="float-end ms-3 mr-3">
+  <img src="/assets/images/ElapsedTimeAdderIcon.png" alt="Elapsed Time Adder logo" style="width: 150px;">
 </div>
 # Elapsed Time Adder
 Elapsed Time Adder app for macOS and iOS that helps you add (and subtract) elapsed time.
